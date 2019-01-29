@@ -1,6 +1,7 @@
 ﻿namespace EventBus.Events
 {
-    public class TestIntegrationEvent : IntegrationEvent
+    public class LogIntegrationEvent : IntegrationEvent
     {
+        public string Message { get; set; }
     }
 }

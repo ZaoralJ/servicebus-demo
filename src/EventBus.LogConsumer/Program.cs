@@ -1,4 +1,4 @@
-﻿namespace EventBus.Consumer
+﻿namespace EventBus.LogConsumer
 {
     using System;
     using Castle.Facilities.TypedFactory;
@@ -29,13 +29,13 @@
 
                 Component.For<IEventBus>()
                     .ImplementedBy<EventBusRabbitMQ>()
-                    .DependsOn(new { queueName = "TestIntegrationEvent" }),
+                    .DependsOn(new { queueName = "LogIntegrationEvent" }),
 
-                Component.For<TestIntegrationEventHandler>());
+                Component.For<LogIntegrationEventHandler>());
 
             var x = container.Resolve<IEventBus>();
 
-            x.Subscribe<TestIntegrationEvent, TestIntegrationEventHandler>();
+            x.Subscribe<LogIntegrationEvent, LogIntegrationEventHandler>();
 
             x.StartConsumerChannel();
 
